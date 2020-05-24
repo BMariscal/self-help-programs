@@ -1,12 +1,11 @@
 from faker import Faker
+from sqlalchemy import Column, ForeignKey, Integer, String
 
 from ..database import Base, db_session
-from sqlalchemy import ARRAY, Column, DateTime, Enum, ForeignKey, Integer, String, func
-from sqlalchemy.orm import relationship
 
 
-class QuestionOption(Base):
-    __tablename__ = 'questionoption'
+class QuestionActivityOption(Base):
+    __tablename__ = 'questionactivityoptions'
     id = Column(Integer, primary_key=True)
     question_option_content = Column(String)
     question_activity_id = Column(Integer, ForeignKey('questionactivities.id'))
@@ -14,7 +13,7 @@ class QuestionOption(Base):
     @classmethod
     def seed(cls, question_activity):
         fake = Faker()
-        question_option = QuestionOption(
+        question_option = QuestionActivityOption(
             question_option_content=fake.text(),
             question_activity_id=question_activity.id,
         )

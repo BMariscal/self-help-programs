@@ -18,4 +18,3 @@ RUN pip install -U pip
 COPY . .
 
 CMD ["flask","run"]
-

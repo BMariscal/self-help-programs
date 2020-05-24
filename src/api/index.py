@@ -6,8 +6,8 @@ import sys
 from flask import Flask
 from flask_graphql import GraphQLView
 
-from .schema import schema
 from .db.database import db_session
+from .schema import schema
 from .setup import init_db
 
 app = Flask(__name__)
@@ -24,6 +24,7 @@ logging.basicConfig(
 app.add_url_rule(
     "/graphql", view_func=GraphQLView.as_view("graphql", schema=schema, graphiql=True)
 )
+
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):

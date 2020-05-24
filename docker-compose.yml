@@ -14,11 +14,6 @@ services:
         POSTGRES_PORT: ${POSTGRES_PORT}
     volumes:
       - .:/data
-    healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:5433"]
-        interval: 30s
-        timeout: 10s
-        retries: 5
   api:
     build: ./
     ports:
@@ -39,4 +34,4 @@ services:
         FLASK_RUN_PORT: ${FLASK_RUN_PORT}
         FLASK_ENV: ${FLASK_ENV}
     volumes:
-      - .:/bedata
+      - .:/apidata

@@ -1,8 +1,7 @@
 from faker import Faker
+from sqlalchemy import Column, ForeignKey, Integer, String
 
 from ..database import Base, db_session
-from sqlalchemy import ARRAY, Column, DateTime, Enum, ForeignKey, Integer, String, func
-from sqlalchemy.orm import relationship
 
 
 class TextActivity(Base):
@@ -10,7 +9,6 @@ class TextActivity(Base):
     id = Column(Integer, primary_key=True)
     text_activity_content = Column(String)
     section_id = Column(Integer, ForeignKey('sections.id'))
-
 
     @classmethod
     def seed(cls, section):

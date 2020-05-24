@@ -1,8 +1,8 @@
 from faker import Faker
+from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.orm import relationship
 
 from ..database import Base, db_session
-from sqlalchemy import ARRAY, Column, DateTime, Enum, ForeignKey, Integer, String, func
-from sqlalchemy.orm import relationship
 
 
 class Section(Base):
@@ -16,7 +16,6 @@ class Section(Base):
 
     question_activities = relationship('QuestionActivity', backref="section")
     text_activities = relationship('TextActivity', backref="section")
-
 
     @classmethod
     def seed(cls, program, index):

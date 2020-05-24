@@ -1,6 +1,8 @@
-from ..database import Base, db_session
-from sqlalchemy import ARRAY, Column, DateTime, Enum, ForeignKey, Integer, String, func
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
+
+from ..database import Base, db_session
+
 
 class Program(Base):
     __tablename__ = 'programs'
@@ -34,7 +36,6 @@ class Program(Base):
             description="Apply principles of mindfulness to the way you correspond with others.",
         )
         mindful_communication.save()
-
 
     def save(self):
         db_session.add(self)
