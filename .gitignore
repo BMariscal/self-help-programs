@@ -1,0 +1,5 @@
+.idea/
+src/api/env_script.sh
+src/api/env
+.env
+
