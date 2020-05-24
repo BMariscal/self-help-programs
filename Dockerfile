@@ -7,7 +7,7 @@ RUN pip install --upgrade pip==9.0.3
 RUN pip install -r ./src/api/requirements.txt --disable-pip-version-check
 RUN pip install python-dotenv --disable-pip-version-check
 
-ENV PYTHONUNBUFFERED 0
+ENV PYTHONUNBUFFERED 1
 ENV FLASK_APP ./index.py
 ENV FLASK_RUN_HOST 0.0.0.0
 ENV FLASK_RUN_PORT 5000

@@ -1,17 +1,28 @@
 #!/usr/bin/env python
-from .setup import init_db
-from .db.database import db_session
-from .db.schema import schema
-from flask_graphql import GraphQLView
-from flask import Flask, jsonify
+import asyncio
+import logging
+import sys
 
+from flask import Flask
+from flask_graphql import GraphQLView
+
+from .schema import schema
+from .db.database import db_session
+from .setup import init_db
 
 app = Flask(__name__)
 app.debug = True
-app.before_first_request(init_db)
+asyncio.run(init_db())
+
+# Load logging configuration
+log = logging.getLogger(__name__)
+logging.basicConfig(
+    stream=sys.stdout,
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 app.add_url_rule(
-    "/all", view_func=GraphQLView.as_view("graphql", schema=schema, graphiql=True)
+    "/graphql", view_func=GraphQLView.as_view("graphql", schema=schema, graphiql=True)
 )
 
 @app.teardown_appcontext
