@@ -1,16 +1,12 @@
-FROM python:3.7-alpine
+FROM python:3.7.1
 
-RUN apk add --no-cache gcc musl-dev linux-headers postgresql-dev
-WORKDIR /app
+ENV PYTHONDONTWRITEBYTECODE=True
 
-# install dependencies
-COPY ./requirements.txt ./requirements.txt
-RUN pip install --upgrade pip==9.0.3
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-RUN pip install -r ./requirements.txt --disable-pip-version-check
-RUN pip install python-dotenv --disable-pip-version-check
+ADD ./requirements.txt /usr/src/app/requirements.txt
 
-COPY . .
+RUN pip install -r requirements.txt
 
-CMD [ "flask", "run"]
-
+ADD . /usr/src/app

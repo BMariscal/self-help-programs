@@ -1,6 +1,6 @@
 import random
 
-from .database import Base, db
+from api import Base, db
 from .models import program, question_activity, question_activity_option, section, text_activity
 
 PROGRAM_TO_SECTIONS_COUNT = {

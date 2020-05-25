@@ -1,15 +1,22 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 
-from ..database import db_session, Base
+from api import Base, db_session
 
 
 class Program(Base):
     __tablename__ = 'programs'
     id = Column(Integer, primary_key=True)
-    name = Column(String)
-    description = Column(String)
+    name = Column(String(128))
+    description = Column(String(500))
     sections = relationship('Section', backref='program')
+
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
+
+    def __repr__(self):
+        return '<Name Object %r>' % self.id
 
     @classmethod
     def seed(cls):

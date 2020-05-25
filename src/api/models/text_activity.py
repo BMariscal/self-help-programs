@@ -1,7 +1,7 @@
 from faker import Faker
 from sqlalchemy import Column, ForeignKey, Integer, String
 
-from ..database import db_session, Base
+from api import Base, db_session
 
 
 class TextActivity(Base):

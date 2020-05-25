@@ -1,6 +1,6 @@
 from faker import Faker
 
-from ..database import db_session, Base
+from api import Base, db_session
 from sqlalchemy import Column, ForeignKey, Integer, String
 
 

@@ -2,14 +2,13 @@ from faker import Faker
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
-from ..database import db_session, Base
-
+from api import Base, db_session
 
 class Section(Base):
     __tablename__ = 'sections'
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    description = Column(String)
+    description = Column(String(500))
     order_index = Column(Integer)
     overview_image = Column(String)
     program_id = Column(Integer, ForeignKey('programs.id'))
