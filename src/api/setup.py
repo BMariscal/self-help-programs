@@ -1,10 +1,7 @@
-import asyncio
 import random
-import logging
-import sys
 
-from .db.database import Base, db
-from .db.models import program, question_activity, question_activity_option, section, text_activity
+from .database import Base, db
+from .models import program, question_activity, question_activity_option, section, text_activity
 
 PROGRAM_TO_SECTIONS_COUNT = {
     "Leadership Development Program": 10,
@@ -13,22 +10,13 @@ PROGRAM_TO_SECTIONS_COUNT = {
     "Mindful Communication": 4,
 }
 
-# Load logging configuration
-log = logging.getLogger(__name__)
-logging.basicConfig(
-    stream=sys.stdout,
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-
 
 async def init_db():
     Base.metadata.create_all(db)
 
-    log.info("CREATING AND SEEDING DB")
-
     program.Program.seed()
     program_entities = program.Program.query.all()
-
+    print("WEEEEE++++")
     for entity in program_entities:
         for i in range(PROGRAM_TO_SECTIONS_COUNT[entity.name]):
             section_entity = section.Section.seed(entity, i)

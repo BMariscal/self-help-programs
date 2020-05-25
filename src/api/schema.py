@@ -2,11 +2,11 @@ import graphene
 from graphene import relay, Int
 from graphene_sqlalchemy import SQLAlchemyConnectionField, SQLAlchemyObjectType
 
-from .db.models import program
-from .db.models import question_activity
-from .db.models import question_activity_option
-from .db.models import section
-from .db.models import text_activity
+from .models import program
+from .models import question_activity
+from .models import question_activity_option
+from .models import section
+from .models import text_activity
 
 
 class CountableConnection(relay.Connection):
@@ -18,15 +18,6 @@ class CountableConnection(relay.Connection):
     @staticmethod
     def resolve_total_count(root, info):
         return root.length
-
-
-# class SectionAttribute:
-#     name = graphene.String(description="Name of Section")
-#     description = graphene.String(description="Sectiondescription.")
-#     ordered_index = graphene.String(description="Index of section.")
-#     overview_image =
-#     program_id =
-#     activity_id
 
 
 class ProgramObject(SQLAlchemyObjectType):
@@ -71,6 +62,7 @@ class QuestionActivityOptionObject(SQLAlchemyObjectType):
 
 class Query(graphene.ObjectType):
     node = relay.Node.Field()
+
     all_text_activities = SQLAlchemyConnectionField(TextActivityObject)
     all_programs = SQLAlchemyConnectionField(ProgramObject)
     all_question_activities = SQLAlchemyConnectionField(QuestionActivityObject)
@@ -82,7 +74,6 @@ class Query(graphene.ObjectType):
     question_activity = relay.Node.Field(QuestionActivityObject)
     question_option = relay.Node.Field(QuestionActivityOptionObject)
     text_activity = relay.Node.Field(TextActivityObject)
-
 
 
 schema = graphene.Schema(query=Query)

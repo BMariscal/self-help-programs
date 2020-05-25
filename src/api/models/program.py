@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 
-from ..database import Base, db_session
+from ..database import db_session, Base
 
 
 class Program(Base):

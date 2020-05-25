@@ -1,6 +1,4 @@
 aniso8601==7.0.0
-click==7.1.2
-curio==1.2
 faker==4.0.3
 Flask==1.1.2
 Flask-GraphQL==2.0.1

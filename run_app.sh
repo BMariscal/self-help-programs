@@ -30,6 +30,3 @@ EOF
 
 docker-compose up
 
-
-echo "FlASK_APP PATH: ${FLASK_APP}"
-echo "POSTGRES PORT: ${POSTGRES_PORT}"
