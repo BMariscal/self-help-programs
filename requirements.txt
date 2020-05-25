@@ -1,5 +1,5 @@
 aniso8601==7.0.0
-faker==4.1.0
+faker==3.0.1
 Flask==1.1.2
 Flask-GraphQL==2.0.1
 graphene==2.1.8
