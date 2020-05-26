@@ -1,14 +1,14 @@
 from faker import Faker
 from sqlalchemy import Column, ForeignKey, Integer, String
 
-from api import Base, db_session
+from ... import Base, db_session
 
 
 class TextActivity(Base):
-    __tablename__ = 'textactivities'
+    __tablename__ = "textactivities"
     id = Column(Integer, primary_key=True)
-    text_activity_content = Column(String)
-    section_id = Column(Integer, ForeignKey('sections.id'))
+    text_activity_content = Column(String, comment="TextActivity Content.")
+    section_id = Column(Integer, ForeignKey("sections.id"), comment="Section-ID TextActivity Belongs To.")
 
     @classmethod
     def seed(cls, section):

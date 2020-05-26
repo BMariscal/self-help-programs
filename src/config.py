@@ -1,6 +1,13 @@
-
+"""
+Set config variables for DEV DB or TEST DB.
+"""
 import os
 
+
+class BaseConfig:
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    DEBUG = False
+    TESTING = False
 
 
 class TestingConfig(BaseConfig):

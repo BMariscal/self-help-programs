@@ -28,5 +28,8 @@ __/  \__/  \__/  \__/  \__/  \__/  \__/  \__/  \__/  \__/  \__/  \__/
 EOF
 
 
-docker-compose up
+docker-compose up -d
+echo "Seeding DB"
+docker-compose run --rm api python manage.py create_fixtures
+echo "Seeded DB"
 

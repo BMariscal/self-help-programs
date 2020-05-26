@@ -5,7 +5,7 @@ services:
       build: ./db
       container_name: postgres
       ports:
-        - 5433:5432
+        - 5432:5432
       networks:
         - net
       environment:
@@ -14,22 +14,25 @@ services:
       volumes:
         - postgres:/var/lib/postgresql/data
 
-    flask:
-      build: ./flask
-      container_name: flask
+    api:
+      build: ./src
+      container_name: api
       volumes:
-        - ./flask:/usr/src/app
+        - ./src:/usr/src
+      ports:
+        - 5000:5000
       networks:
         - net
       environment:
         - APP_SETTINGS=config.DevelopmentConfig
-        - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/db_dev
-        - DATABASE_TEST_URL=postgresql://postgres:postgres@postgres:5432/db_test
+        - DATABASE_URL=postgres:postgres@postgres:5432/db_dev
+        - DATABASE_TEST_URL=postgres:postgres@postgres:5432/db_test
       depends_on:
         - postgres
       links:
         - postgres
-      command: gunicorn --worker-class eventlet -w 4 -b 0.0.0.0:8000 manage:app
+      command: gunicorn --worker-class eventlet -w 4 --preload -b 0.0.0.0:5000 manage:app
+
 
 volumes:
   postgres:

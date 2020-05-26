@@ -2,11 +2,7 @@ import graphene
 from graphene import relay, Int
 from graphene_sqlalchemy import SQLAlchemyConnectionField, SQLAlchemyObjectType
 
-from .models import program
-from .models import question_activity
-from .models import question_activity_option
-from .models import section
-from .models import text_activity
+from .models.db_models import program, question_activity, question_activity_option, section, text_activity
 
 
 class CountableConnection(relay.Connection):
@@ -26,7 +22,7 @@ class ProgramObject(SQLAlchemyObjectType):
         interfaces = (relay.Node,)
         connection_class = CountableConnection
         filter_fields = {
-            'name': ['exact', 'icontains', 'istartswith'],
+            'name': ["exact", "icontains", "istartswith"],
         }
 
 
