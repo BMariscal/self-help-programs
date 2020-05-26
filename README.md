@@ -172,69 +172,48 @@ NOTE: you do not need to `teardown` the app before running the tests
 
 Fetch all programs:
 ```sql
-{ allPrograms {
+{
+  allPrograms {
     edges {
-        node {
-            id
-            name
-            }
-        }
+      node {
+        id
+        name
+      }
     }
+  }
 }
+
 
 ```
 
 One program, One section:
 ```sql
-{ program (id: "UHJvZ3JhbU9iamVjdDox"){
-        id
-        name
-        description
-        sections (first:1) {
-          edges {
-            node {
-              id
-              name
-              description
-              orderIndex
-              overviewImage
-              programId
-                  
-                 }
-            }
-          }
-        }
-}
-                   
+             
 ```
 
 
 Sections with pagination:
 ```sql
-{  allPrograms {
-        edges{
-            node{
-                id
-                name
-                sections(first:2){
-                totalCount
-                    edges {
-                        node {
-                        id
-                        name
-                        description
-                        }
-                    cursor
-                    }
-                pageInfo {
-                endCursor
-                hasNextPage
-                  }         
-                }
-              }
-              }
-           }
+{
+  program(id: "UHJvZ3JhbU9iamVjdDox") {
+    id
+    name
+    description
+    sections(first: 1) {
+      edges {
+        node {
+          id
+          name
+          description
+          orderIndex
+          overviewImage
+          programId
+        }
       }
+    }
+  }
+}
+
 
 ```
 
@@ -244,7 +223,7 @@ One program, all sections, all activities:
 ```sql
 
 {
-  program (id: "UHJvZ3JhbU9iamVjdDox"){
+  program(id: "UHJvZ3JhbU9iamVjdDox") {
     id
     name
     description
@@ -259,35 +238,35 @@ One program, all sections, all activities:
           programId
           questionActivities {
             edges {
-            node {
-            id
-            questionActivityContent
-            sectionId
-            questionOptions {
-             edges {
-              node{
-                questionOptionContent
-                questionActivityId
+              node {
+                id
+                questionActivityContent
+                sectionId
+                questionOptions {
+                  edges {
+                    node {
+                      questionOptionContent
+                      questionActivityId
+                    }
+                  }
+                }
               }
-              }
-            }
             }
           }
-        }
-        textActivities {
+          textActivities {
             edges {
-            node {
-            id
-            textActivityContent
-            sectionId
+              node {
+                id
+                textActivityContent
+                sectionId
+              }
             }
           }
-        }
-    }
         }
       }
     }
   }
-   
+}
+
 
 ```

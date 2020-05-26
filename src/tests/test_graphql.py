@@ -23,12 +23,6 @@ class TestGraphqlEndpoint(TestCase):
 
         return test_app_instance
 
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
-
     def test_graphiql_is_enabled(self):
         with self.client:
             response = self.client.get(url_for("graphql.graphql", externals=False), headers={"Accept": "text/html"})

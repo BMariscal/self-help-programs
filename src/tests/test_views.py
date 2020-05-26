@@ -16,7 +16,7 @@ class TestGraphqlQuery(TestCase):
         Instructs Flask to run these commands when we request this group of tests to be run.
         """
 
-        # Set application confirguration to 'TestingConfig' to use db_test
+        # Set application confirguration to 'TestingConfig' to use db_test.
         test_app_instance.config.from_object('config.TestingConfig')
 
         logger.setLevel(logging.ERROR)
@@ -25,9 +25,6 @@ class TestGraphqlQuery(TestCase):
 
     def setUp(self):
         self.client = Client(Schema.schema)
-
-    def tearDown(self):
-        pass
 
     def test_graphql_programs__successful(self):
         if self.client:
@@ -108,89 +105,89 @@ class TestGraphqlQuery(TestCase):
         if self.client:
             executed = self.client.execute(
                 '''
-                 {
-                  allPrograms {
-                  edges{
-                  node{
-                  id
-                  name
-                    sections(first:2){
-                      totalCount
-                      edges {
-                        node {
-                          id
-                          name
-                          description
-                        }
-                        cursor
-                      }
-                      pageInfo {
-                        endCursor
-                        hasNextPage
-                      }
-                    }
-                    }
-                    }
-                    }
-                }
-
-                ''')
-            assert type(executed["data"]["allPrograms"]["edges"][0]["node"]["sections"]["edges"][0]["cursor"]) == str
-
-
-    def test_graphql_query_program_sectionsactivties__success(self):
-        if self.client:
-            executed = self.client.execute(
-                    '''
                     {
-                      program (id: "UHJvZ3JhbU9iamVjdDox"){
-                        id
-                        name
-                        description
-                        sections {
-                          edges {
-                            node {
-                              id
-                              name
-                              description
-                              orderIndex
-                              overviewImage
-                              programId
-                              
-                              questionActivities {
-                                  edges {
-                                  node {
-                                  id
-                                  questionActivityContent
-                                  sectionId
-                                  questionOptions {
-                                   edges {
-                                    node{
-                                      questionOptionContent
-                                      questionActivityId
-                                    }
-                                    }
-                                  }
-                                  }
-                                }
-                            }
-                            textActivities {
-                                edges {
+                      allPrograms {
+                        edges {
+                          node {
+                            id
+                            name
+                            sections(first: 2) {
+                              totalCount
+                              edges {
                                 node {
-                                id
-                                textActivityContent
-                                sectionId
+                                  id
+                                  name
+                                  description
                                 }
+                                cursor
                               }
-                            }
-                        }
+                              pageInfo {
+                                endCursor
+                                hasNextPage
+                              }
                             }
                           }
                         }
                       }
-                    ''' )
+                    }
+
+
+                ''')
+            assert type(executed["data"]["allPrograms"]["edges"][0]["node"]["sections"]["edges"][0]["cursor"]) == str
+
+    def test_graphql_query_program_sectionsactivties__success(self):
+        if self.client:
+            executed = self.client.execute(
+                '''
+        {
+          program(id: "UHJvZ3JhbU9iamVjdDox") {
+            id
+            name
+            description
+            sections {
+              edges {
+                node {
+                  id
+                  name
+                  description
+                  orderIndex
+                  overviewImage
+                  programId
+                  questionActivities {
+                    edges {
+                      node {
+                        id
+                        questionActivityContent
+                        sectionId
+                        questionOptions {
+                          edges {
+                            node {
+                              questionOptionContent
+                              questionActivityId
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  textActivities {
+                    edges {
+                      node {
+                        id
+                        textActivityContent
+                        sectionId
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+                ''')
 
             assert executed != None
+
 
 if __name__ == '__main__':
     unittest.main()
