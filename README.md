@@ -108,9 +108,11 @@ This app uses flask_script's Manager to initliaze the app, seed the db and run t
 
 **Set up:**
 
-*run app and seed db*
 
 NOTE: I've included the .env file to facilitate setup. 
+
+
+To *run app and seed db*, in root directory, run:
 
 `sh run_app.sh`
 
@@ -118,7 +120,9 @@ NOTE: I've included the .env file to facilitate setup.
 
 App can be found here:  
 <br>
-`http://0.0.0.0:5000/`
+`http://0.0.0.0:5000/graphql`
+
+
 <br>
 
 <br>
