@@ -1,6 +1,15 @@
 
 Self-Help-Programs API
 -----
+[Set-up instructions](#how-to-run-app)
+
+[How to run tests](#how-to-run-tests)
+
+[Endpoint](#endpoint)
+
+[Example GraphQL queries](#graphql-queries)
+
+<br>
 
 Languages & Libraries:
 * Python 3.7
@@ -10,9 +19,6 @@ Languages & Libraries:
 * Graphene
 * SQLAlchemy
 * Docker
-
-Testing:
-
 * graphene.test
 * unittest
 
@@ -102,18 +108,20 @@ This app uses flask_script's Manager to initliaze the app, seed the db and run t
 
 **Set up:**
 
-
 *run app and seed db*
 
 NOTE: I've included the .env file to facilitate setup. 
 
-
 `sh run_app.sh`
 
+<br>
 
-
-App can be found at   
+App can be found here:  
+<br>
 `http://0.0.0.0:5000/`
+<br>
+
+<br>
 
 **Tear down:**
 
@@ -174,8 +182,7 @@ Fetch all programs:
 
 One program, One section:
 ```sql
-{            
-    program (id: "UHJvZ3JhbU9iamVjdDox"){
+{ program (id: "UHJvZ3JhbU9iamVjdDox"){
         id
         name
         description
@@ -200,31 +207,30 @@ One program, One section:
 
 Sections with pagination:
 ```sql
-{
-          allPrograms {
-                edges{
-                    node{
+{  allPrograms {
+        edges{
+            node{
+                id
+                name
+                sections(first:2){
+                totalCount
+                    edges {
+                        node {
                         id
                         name
-                        sections(first:2){
-                        totalCount
-                            edges {
-                                node {
-                                id
-                                name
-                                description
-                                }
-                            cursor
-                            }
-                        pageInfo {
-                        endCursor
-                        hasNextPage
-                        }         
+                        description
+                        }
+                    cursor
                     }
+                pageInfo {
+                endCursor
+                hasNextPage
+                  }         
                 }
-            }
-            }
-    }
+              }
+              }
+           }
+      }
 
 ```
 
