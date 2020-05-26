@@ -21,22 +21,22 @@ Testing:
 #### Postgres DB Schema
 ![db schema](db_schema.png)
 
-DB Schema Overview:
+##### DB Schema Overview:
 ```text
 
 
 Many Programs
 
-One Program-to-Many Sections
+    One Program-to-Many Sections
 
-One Section-to-Many Activities
+        One Section-to-Many Activities
 
-    Two types of Activities:
+            Two types of Activities:
 
-        - Question Activity (multiple choice question)
-            - One Question-to-Many Answer Choices
+                - Question Activity (multiple choice question)
+                        - One Question-to-Many Answer Options(where only one option can be picked)
 
-        - Text Actvity
+                - Text Actvity
   
       
  ``` 
@@ -92,7 +92,7 @@ ____
 
 #### How to run app:
 
-----
+
 <br>
 
 This app uses flask_script's Manager to initliaze the app, seed the db and run the tests from the command line.
@@ -125,7 +125,7 @@ NOTE: you do not need to `teardown` the app before running the tests
 
 #### How to run tests:
 
-----
+
 
 <br>
 
@@ -138,15 +138,24 @@ NOTE: you do not need to `teardown` the app before running the tests
 ----
 
 #### Endpoint:
+<br>
+<br>
 
-----
+
 
 `http://0.0.0.0:5000/graphql?query={}`
+
+
+
+<br>
+<br>
+
 
 ----
 #### GraphQL Queries:
 
-----
+<br>
+<br>
 
 
 Fetch all programs:
