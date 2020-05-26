@@ -13,9 +13,8 @@ class TestGraphqlQuery(TestCase):
     """
     Test Graphql queries.
     """
-    def create_app(self):
 
-        # Set application confirguration to 'TestingConfig' to use db_test.
+    def create_app(self):
         test_app_instance.config.from_object('config.TestingConfig')
 
         logger.setLevel(logging.ERROR)
@@ -185,7 +184,7 @@ class TestGraphqlQuery(TestCase):
         }
                 ''')
 
-            assert executed != None
+            assert executed is not None
 
 
 if __name__ == '__main__':

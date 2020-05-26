@@ -15,8 +15,6 @@ class TestGraphqlEndpoint(TestCase):
     """
 
     def create_app(self):
-
-        # Set application confirguration to 'TestingConfig' to use db_test
         test_app_instance.config.from_object('config.TestingConfig')
 
         logger.setLevel(logging.ERROR)
@@ -37,6 +35,7 @@ class TestGraphqlEndpoint(TestCase):
         with self.client:
             response = self.client.get('/graphql')
             self.assertEqual(response.status_code, 400)
+
 
 if __name__ == '__main__':
     unittest.main()
