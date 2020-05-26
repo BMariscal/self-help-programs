@@ -22,7 +22,7 @@ Testing:
 ![db schema](db_schema.png)
 
 DB Schema Overview:
-```sql
+```text
 
 
 Many Programs
@@ -35,8 +35,10 @@ One Section-to-Many Activities
 
         - Question Activity (multiple choice question)
             - One Question-to-Many Answer Choices
+
         - Text Actvity
-        
+  
+      
  ``` 
 
 <br>
