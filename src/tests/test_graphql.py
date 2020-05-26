@@ -10,11 +10,11 @@ test_app_instance = create_app()
 
 
 class TestGraphqlEndpoint(TestCase):
+    """
+    Test Graphql endpoint.
+    """
 
     def create_app(self):
-        """
-        Instructs Flask to run these commands when we request this group of tests to be run.
-        """
 
         # Set application confirguration to 'TestingConfig' to use db_test
         test_app_instance.config.from_object('config.TestingConfig')
