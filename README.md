@@ -1,13 +1,13 @@
 
 Self-Help-Programs API
 -----
-[Set-up instructions](#how-to-run-app)
+❓ [Set-up instructions](#how-to-run-app)
 
-[How to run tests](#how-to-run-tests)
+❓ [How to run tests](#how-to-run-tests)
 
-[Endpoint](#endpoint)
+❓ [Endpoint](#endpoint)
 
-[Example GraphQL queries](#graphql-queries)
+❓ [Example GraphQL queries](#graphql-queries)
 
 <br>
 
