@@ -188,12 +188,6 @@ Fetch all programs:
 
 One program, One section:
 ```sql
-             
-```
-
-
-Sections with pagination:
-```sql
 {
   program(id: "UHJvZ3JhbU9iamVjdDox") {
     id
@@ -208,6 +202,36 @@ Sections with pagination:
           orderIndex
           overviewImage
           programId
+        }
+      }
+    }
+  }
+}             
+```
+
+
+Sections with pagination:
+```sql
+{
+  allPrograms {
+    edges {
+      node {
+        id
+        name
+        sections(first: 2) {
+          totalCount
+          edges {
+            node {
+              id
+              name
+              description
+            }
+            cursor
+          }
+          pageInfo {
+            endCursor
+            hasNextPage
+          }
         }
       }
     }
