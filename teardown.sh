@@ -2,4 +2,4 @@
 
 docker-compose down
 # Removes db volume to remove seed data.
-docker volume rm selfhelpprograms_postgres
+docker volume rm self-help-programs_postgres
