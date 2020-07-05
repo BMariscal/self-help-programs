@@ -1,6 +1,5 @@
+## Self-Help-Programs API
 
-Self-Help-Programs API
------
 ❓ [Set-up instructions](#how-to-run-app)
 
 ❓ [How to run tests](#how-to-run-tests)
@@ -12,22 +11,26 @@ Self-Help-Programs API
 <br>
 
 Languages & Libraries:
-* Python 3.7
-* Flask
-* Postgres
-* GraphQL
-* Graphene
-* SQLAlchemy
-* Docker
-* graphene.test
-* unittest
 
+- Python 3.7
+- Flask
+- Postgres
+- GraphQL
+- Relay
+- Graphene
+- SQLAlchemy
+- Docker
+- graphene.test
+- unittest
 
 ---
+
 #### Postgres DB Schema
+
 ![db schema](db_schema.png)
 
 ##### DB Schema Overview:
+
 ```text
 
 
@@ -43,9 +46,9 @@ Many Programs
                         - One Question-to-Many Answer Options(where only one option can be picked)
 
                 - Text Actvity
-  
-      
- ``` 
+
+
+```
 
 <br>
 <br>  
@@ -54,7 +57,6 @@ ____
 
 <br>
 <br>
-
 
 ```
 .
@@ -74,13 +76,13 @@ ____
 │   │   │   └── routes.py
 │   │   ├── models
 │   │   │    └── db_models
-│   │   │         ├── __init__.py 
-│   │   │         ├── program.py 
-│   │   │         ├── question_activity.py 
-│   │   │         ├── question_activity_option.py 
-│   │   │         ├── section.py 
-│   │   │         └── text_activity.py 
-│   │   │   
+│   │   │         ├── __init__.py
+│   │   │         ├── program.py
+│   │   │         ├── question_activity.py
+│   │   │         ├── question_activity_option.py
+│   │   │         ├── section.py
+│   │   │         └── text_activity.py
+│   │   │
 │   │   └── schema.py
 │   │   └── settings.py
 │   ├── requirements.txt
@@ -94,25 +96,23 @@ ____
 
 
 ```
+
 ---
 
 #### How to run app:
 
-
 <br>
 
 This app uses flask_script's Manager to initliaze the app, seed the db and run the tests from the command line.
- You can find the Manager instance in `src/manage.py`.
- 
+You can find the Manager instance in `src/manage.py`.
+
  <br>
 
 **Set up:**
 
+NOTE: I've included the .env file to facilitate setup.
 
-NOTE: I've included the .env file to facilitate setup. 
-
-
-To *run app and seed db*, in root directory, run:
+To _run app and seed db_, in root directory, run:
 
 `sh run_app.sh`
 
@@ -121,7 +121,6 @@ To *run app and seed db*, in root directory, run:
 App can be found here:  
 <br>
 `http://0.0.0.0:5000/graphql`
-
 
 <br>
 
@@ -133,44 +132,37 @@ App can be found here:
 
 NOTE: you do not need to `teardown` the app before running the tests
 
-----
+---
 
 #### How to run tests:
-
-
 
 <br>
 
 `docker-compose run --rm api python manage.py test`
 
-
 <br>
 
-
-----
+---
 
 #### Endpoint:
+
 <br>
 <br>
-
-
 
 `http://0.0.0.0:5000/graphql?query={}`
 
-
-
 <br>
 <br>
 
+---
 
-----
 #### GraphQL Queries:
 
 <br>
 <br>
 
-
 Fetch all programs:
+
 ```sql
 {
   allPrograms {
@@ -187,6 +179,7 @@ Fetch all programs:
 ```
 
 One program, One section:
+
 ```sql
 {
   program(id: "UHJvZ3JhbU9iamVjdDox") {
@@ -206,11 +199,11 @@ One program, One section:
       }
     }
   }
-}             
+}
 ```
 
-
 Sections with pagination:
+
 ```sql
 {
   allPrograms {
@@ -240,7 +233,6 @@ Sections with pagination:
 
 
 ```
-
 
 One program, all sections, all activities:
 
