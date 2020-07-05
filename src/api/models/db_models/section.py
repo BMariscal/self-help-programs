@@ -12,7 +12,8 @@ class Section(Base):
     description = Column(String(500), comment="Section Description.")
     order_index = Column(Integer, comment="Section Order Index.")
     overview_image = Column(String, comment="Section Overview Image.")
-    program_id = Column(Integer, ForeignKey("programs.id"), comment="Program ID Section Belongs To.",)
+    program_id = Column(Integer, ForeignKey("programs.id"),
+                        comment="Program ID Section Belongs To.",)
 
     question_activities = relationship("QuestionActivity", backref="section")
     text_activities = relationship("TextActivity", backref="section")

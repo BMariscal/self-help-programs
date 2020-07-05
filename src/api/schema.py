@@ -21,9 +21,6 @@ class ProgramObject(SQLAlchemyObjectType):
         model = program.Program
         interfaces = (relay.Node,)
         connection_class = CountableConnection
-        filter_fields = {
-            'name': ["exact", "icontains", "istartswith"],
-        }
 
 
 class SectionObject(SQLAlchemyObjectType):
@@ -62,7 +59,8 @@ class Query(graphene.ObjectType):
     all_text_activities = SQLAlchemyConnectionField(TextActivityObject)
     all_programs = SQLAlchemyConnectionField(ProgramObject)
     all_question_activities = SQLAlchemyConnectionField(QuestionActivityObject)
-    all_question_options = SQLAlchemyConnectionField(QuestionActivityOptionObject)
+    all_question_options = SQLAlchemyConnectionField(
+        QuestionActivityOptionObject)
     all_sections = SQLAlchemyConnectionField(SectionObject)
 
     program = relay.Node.Field(ProgramObject)

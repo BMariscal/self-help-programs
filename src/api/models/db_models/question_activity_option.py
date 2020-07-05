@@ -7,8 +7,10 @@ from ... import Base, db_session
 class QuestionActivityOption(Base):
     __tablename__ = "questionactivityoptions"
     id = Column(Integer, primary_key=True)
-    question_option_content = Column(String, comment="QuestionActivityOption Content.")
-    question_activity_id = Column(Integer, ForeignKey("questionactivities.id"), comment="QuestionActivity-ID QuestionActivityOption Belongs to.")
+    question_option_content = Column(
+        String, comment="QuestionActivityOption Content.")
+    question_activity_id = Column(Integer, ForeignKey(
+        "questionactivities.id"), comment="QuestionActivity-ID QuestionActivityOption Belongs to.")
 
     @classmethod
     def seed(cls, question_activity):

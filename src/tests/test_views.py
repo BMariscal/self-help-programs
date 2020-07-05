@@ -39,8 +39,10 @@ class TestGraphqlQuery(TestCase):
 
             assert executed == {'data': {'allPrograms': {
                 'edges': [{'node': {'id': 'UHJvZ3JhbU9iamVjdDox', 'name': 'Leadership Development Program'}},
-                          {'node': {'id': 'UHJvZ3JhbU9iamVjdDoy', 'name': 'Cognitive Behavioral Therapy'}},
-                          {'node': {'id': 'UHJvZ3JhbU9iamVjdDoz', 'name': 'New Parenting'}},
+                          {'node': {'id': 'UHJvZ3JhbU9iamVjdDoy',
+                                    'name': 'Cognitive Behavioral Therapy'}},
+                          {'node': {'id': 'UHJvZ3JhbU9iamVjdDoz',
+                                    'name': 'New Parenting'}},
                           {'node': {'id': 'UHJvZ3JhbU9iamVjdDo0', 'name': 'Mindful Communication'}}]}}}
 
     def test_graphql_one_program__all_sections__successful(self):
@@ -131,7 +133,8 @@ class TestGraphqlQuery(TestCase):
 
 
                 ''')
-            assert type(executed["data"]["allPrograms"]["edges"][0]["node"]["sections"]["edges"][0]["cursor"]) == str
+            assert type(executed["data"]["allPrograms"]["edges"]
+                        [0]["node"]["sections"]["edges"][0]["cursor"]) == str
 
     def test_graphql_query_program_sectionsactivties__success(self):
         if self.client:

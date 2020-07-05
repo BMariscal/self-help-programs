@@ -23,12 +23,14 @@ class TestGraphqlEndpoint(TestCase):
 
     def test_graphiql_is_enabled(self):
         with self.client:
-            response = self.client.get(url_for("graphql.graphql", externals=False), headers={"Accept": "text/html"})
+            response = self.client.get(
+                url_for("graphql.graphql", externals=False), headers={"Accept": "text/html"})
         assert response.status_code == 200
 
     def test_graphql_page__success(self):
         with self.client:
-            response = self.client.get(url_for("graphql.graphql", query="{test}"), headers={"Accept": "text/html"})
+            response = self.client.get(
+                url_for("graphql.graphql", query="{test}"), headers={"Accept": "text/html"})
             self.assertEqual(response.status_code, 200)
 
     def test_graphql_page__failure(self):

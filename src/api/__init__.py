@@ -7,11 +7,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=logging.INFO)
+logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-POSTGRES_USER = os.environ.get("POSTGRES_USER")
-POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
 POSTGRES_CONNECTION_URI = os.getenv('DATABASE_URL')
 
 DATABASE_CONNECTION_URI = f'postgresql+psycopg2://{POSTGRES_CONNECTION_URI}'
@@ -29,13 +28,12 @@ Base.query = db_session.query_property()
 
 def seed_db():
     """
-    Seeds SQLAlchemy tables.
-    Args:
-        program(SQLAlchemy Model): Program table object
-        section(SQLAlchemy Model): Section table object
-        activity(SQLAlchemy Model): QuestionActivity table object
-        option(SQLAlchemy Model): QuestionActivityOption table object
-        text_activity(SQLAlchemy Model): TextActivity table object
+    Seeds tables:
+    program(SQLAlchemy Model): Program table object
+    section(SQLAlchemy Model): Section table object
+    activity(SQLAlchemy Model): QuestionActivity table object
+    option(SQLAlchemy Model): QuestionActivityOption table object
+    text_activity(SQLAlchemy Model): TextActivity table object
 
     Returns:
     """
@@ -61,7 +59,8 @@ def seed_db():
             section_entity = section.Section.seed(entity, i)
             for j in range(random.randint(2, 5)):
                 if j % 2 == 0:
-                    question_activity_entity = question_activity.QuestionActivity.seed(section_entity)
+                    question_activity_entity = question_activity.QuestionActivity.seed(
+                        section_entity)
                     question_activity_option.QuestionActivityOption.seed(
                         question_activity_entity)
                 else:

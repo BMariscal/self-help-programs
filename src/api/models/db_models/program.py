@@ -6,16 +6,14 @@ from sqlalchemy.orm import relationship
 class Program(Base):
     __tablename__ = "programs"
     id = Column(Integer, primary_key=True)
-    name = Column(String(128), nullable=False, unique=True, comment="Name of Program.")
+    name = Column(String(128), nullable=False,
+                  unique=True, comment="Name of Program.")
     description = Column(String(500), comment="Program Description.")
     sections = relationship('Section', backref='program')
 
     def __init__(self, name, description):
         self.name = name
         self.description = description
-
-    def __repr__(self):
-        return '<Name Object %r>' % self.id
 
     @classmethod
     def seed(cls):

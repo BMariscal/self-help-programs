@@ -6,4 +6,3 @@ INSTALLED_APPS = [
 GRAPHENE = {
     "SCHEMA": ".schema"
 }
-
