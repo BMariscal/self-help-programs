@@ -13,6 +13,7 @@
 Languages & Libraries:
 
 - Python 3.7
+- Gunicorn
 - Flask
 - Postgres
 - GraphQL
@@ -103,7 +104,7 @@ ____
 
 <br>
 
-This app uses flask_script's Manager to initliaze the app, seed the db and run the tests from the command line.
+This app uses flask_script's Manager to initialize the app, seed the db and run the tests from the command line.
 You can find the Manager instance in `src/manage.py`.
 
  <br>
