@@ -25,6 +25,6 @@ Werkzeug==0.16.1
 gunicorn==19.9.0
 psycopg2==2.7.1
 Flask-SQLAlchemy==2.2
-eventlet==0.21.0
+eventlet==0.31.0
 flask-script==2.0.5
 flask_testing==0.8.0
